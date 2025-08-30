@@ -58,7 +58,33 @@ class MockStatement {
         $this->params[$param] = $value;
     }
     
-    public function fetch() {
+    public function fetch($fetchStyle = PDO::FETCH_ASSOC) {
+        // Handle COUNT queries
+        if (stripos($this->sql, 'COUNT(*)') !== false) {
+            $count = 0;
+            
+            if (stripos($this->sql, 'categories') !== false) {
+                $categoriesFile = dirname($this->dataFile) . '/categories.json';
+                if (file_exists($categoriesFile)) {
+                    $categories = json_decode(file_get_contents($categoriesFile), true) ?: [];
+                    $count = count($categories);
+                }
+            } elseif (stripos($this->sql, 'markas') !== false) {
+                $markasFile = dirname($this->dataFile) . '/markas.json';
+                if (file_exists($markasFile)) {
+                    $markas = json_decode(file_get_contents($markasFile), true) ?: [];
+                    $count = count($markas);
+                }
+            } elseif (stripos($this->sql, 'products') !== false) {
+                $products = json_decode(file_get_contents($this->dataFile), true) ?: [];
+                $count = count($products);
+            } elseif (stripos($this->sql, 'users') !== false) {
+                $count = 1; // Mock user count
+            }
+            
+            return ['count' => $count];
+        }
+        
         // Mock fetch method for users table
         if (strpos($this->sql, 'users') !== false && strpos($this->sql, 'SELECT') !== false) {
             // Return mock admin user

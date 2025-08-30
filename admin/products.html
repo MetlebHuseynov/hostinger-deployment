@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Məhsullar - ProLine Admin</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome icons - using local fallback if CDN fails -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onerror="this.onerror=null;this.href='/css/fontawesome-fallback.css';">
     <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
@@ -366,6 +367,17 @@
             .catch(error => {
                 console.error('Error fetching products.js:', error);
             });
+            
+        // Load sync management script
+        const syncScript = document.createElement('script');
+        syncScript.src = '../js/admin/sync.js';
+        syncScript.onload = function() {
+            console.log('Sync management loaded successfully');
+        };
+        syncScript.onerror = function() {
+            console.error('Failed to load sync.js');
+        };
+        document.head.appendChild(syncScript);
     </script>
 </body>
 </html>

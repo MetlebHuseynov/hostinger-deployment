@@ -105,7 +105,9 @@ class ProductsManager {
             const response = await fetch(`${this.apiUrl}/products`);
             if (!response.ok) throw new Error('Failed to load products');
             const data = await response.json();
-            this.products = data.data ? data.data.products : [];
+            console.log('API Response:', data);
+            // API cavabı {success: true, data: {data: [...], pagination: {...}}} formatındadır
+            this.products = data.data.data || [];
             this.renderProducts();
         } catch (error) {
             console.error('Error loading products:', error);
@@ -315,6 +317,13 @@ class ProductsManager {
         if (!tbody) return;
 
         tbody.innerHTML = '';
+        
+        // Məhsullar massivinin mövcudluğunu yoxla
+        if (!this.products || !Array.isArray(this.products)) {
+            console.warn('Products array is not available or not an array:', this.products);
+            tbody.innerHTML = '<tr><td colspan="9" class="text-center text-muted">Məhsul tapılmadı</td></tr>';
+            return;
+        }
         
         this.products.forEach(product => {
             const row = document.createElement('tr');
