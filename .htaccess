@@ -1,0 +1,53 @@
+# Hostinger Production .htaccess
+RewriteEngine On
+
+# HTTPS Redirection
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Security Headers
+Header always set X-Content-Type-Options nosniff
+Header always set X-Frame-Options DENY
+Header always set X-XSS-Protection "1; mode=block"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';"
+
+# Hotlink Protection
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?prolinegee\.com [NC]
+RewriteCond %{REQUEST_URI} \.(jpe?g|png|gif|svg|webp)$ [NC]
+RewriteRule . - [F]
+
+# API Routes - PHP fayllarına yönləndirmə
+RewriteCond %{REQUEST_URI} ^/api/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^api/(.*)$ api/index.php [QSA,L]
+
+# Static Files - CSS, JS, Images
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(css|js|images|uploads)/(.*)$ $0 [L]
+
+# Admin Panel Routes
+RewriteCond %{REQUEST_URI} ^/admin/
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^admin/(.*)$ $0 [L]
+
+# Frontend HTML Routes
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(.+\.html)$ $0 [L]
+
+# Block access to sensitive files
+<FilesMatch "\.(env|log|sql|md|txt|json)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block access to config and database directories
+RewriteRule ^(config|database)/ - [F,L]
+
+# SPA Routing - Ana səhifəyə yönləndirmə
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/api/
+RewriteCond %{REQUEST_URI} !^/(css|js|images|uploads|admin)/
+RewriteRule ^(.*)$ index.html [QSA,L]

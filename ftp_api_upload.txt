@@ -1,0 +1,16 @@
+open ftp.prolinege.com
+u482576391.prolinege
+0993991019Matlab?
+binary
+cd public_html
+mkdir api
+cd api
+put api\index.php
+put api\products.php
+put api\categories.php
+put api\markas.php
+put api\auth.php
+mkdir config
+cd config
+put config\database.php
+quit

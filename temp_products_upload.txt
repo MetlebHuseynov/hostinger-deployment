@@ -1,0 +1,8 @@
+open prolinege.com
+u1194-ixqhqhqhqh
+Proline2024!
+cd public_html
+cd js
+cd admin
+put products.js
+quit

@@ -1,0 +1,7 @@
+open prolinege.com
+u172571443.prolinege
+Prolinege2024!
+binary
+cd public_html/js/admin
+put "C:\Users\ABV\Desktop\hostinger-deployment\js\admin\products.js" products.js
+quit

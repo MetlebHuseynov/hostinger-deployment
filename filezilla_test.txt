@@ -1,0 +1,29 @@
+FileZilla Test Configuration
+=============================
+
+Host: ftp.prolinege.com
+Username: u482576391.prolinege
+Password: 0993991019Matlab?
+Port: 21
+Protocol: FTP
+Encryption: Use plain FTP (insecure)
+
+Remote Directory: /home/u482576391/domains/prolinege.com/public_html
+
+Instructions:
+1. Download FileZilla from: https://filezilla-project.org/
+2. Open FileZilla
+3. Go to File > Site Manager
+4. Click "New Site"
+5. Enter the above details
+6. Click "Connect"
+7. If connection works, you can drag and drop files to upload
+
+Alternative Quick Connect:
+- Host: ftp.prolinege.com
+- Username: u482576391.prolinege
+- Password: 0993991019Matlab?
+- Port: 21
+
+If this doesn't work, the FTP credentials are incorrect.
+Please check Hostinger control panel for correct FTP details.

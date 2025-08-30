@@ -1,0 +1,7 @@
+open prolinege.com
+u482576391.prolinege
+0993991019Matlab?
+binary
+cd public_html
+put .env .env
+quit

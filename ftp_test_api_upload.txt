@@ -1,0 +1,6 @@
+open ftp.prolinege.com
+u482576391.prolinege
+0993991019Matlab?
+binary
+put test_api_simple.php
+quit

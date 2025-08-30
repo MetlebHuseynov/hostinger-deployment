@@ -1,0 +1,62 @@
+# WinSCP Deployment Script
+# Save this as winscp_deploy.txt and use with WinSCP
+
+# Connection settings
+open ftp://u482576391.prolinege:0993991019Matlab?@prolinege.com
+
+# Change to target directory
+cd /public_html
+
+# Upload HTML files
+put index.html
+put about.html
+put categories.html
+put products.html
+put marka.html
+put product.html
+put contact.html
+
+# Upload CSS directory
+mkdir css
+put -r css/*
+
+# Upload JS directory
+mkdir js
+put -r js/*
+
+# Upload Images directory
+mkdir images
+put -r images/*
+
+# Upload Admin directory
+mkdir admin
+put -r admin/*
+
+# Upload API directory
+mkdir api
+put -r api/*
+
+# Upload Config directory
+mkdir config
+put -r config/*
+
+# Upload Models directory
+mkdir models
+put -r models/*
+
+# Upload .htaccess file
+put HOSTINGER_htaccess_file.txt .htaccess
+
+# Create uploads directory with proper permissions
+mkdir uploads
+chmod 755 uploads
+
+# Close connection
+close
+exit
+
+# Usage Instructions:
+# 1. Install WinSCP from https://winscp.net/
+# 2. Replace PASSWORD with your actual FTP password
+# 3. Run: winscp.exe /script=winscp_deploy.txt
+# 4. Or use WinSCP GUI and import this script

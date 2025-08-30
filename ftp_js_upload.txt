@@ -1,0 +1,7 @@
+open ftp.prolinege.com
+u482576391.prolinege
+0993991019Matlab?
+binary
+cd js/admin
+put js\admin\products.js products.js
+quit
