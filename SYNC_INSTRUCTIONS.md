@@ -29,7 +29,7 @@
 ## 📊 Current Local Data Summary:
 - This sync file contains data from your local SQLite database
 - Tables included: categories, markas, products
-- Generated: 2025-08-30T20:50:50.386Z
+- Generated: 2025-08-30T21:20:17.541Z
 
 ## ⚠️ Important Notes:
 - This will REPLACE all data in Hostinger tables

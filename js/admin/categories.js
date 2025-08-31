@@ -165,7 +165,23 @@ class CategoriesManager {
             }
             
             const result = await response.json();
-            this.categories = result.data || result;
+            console.log('API Response:', result);
+            
+            // Handle nested data structure
+            if (result.data && result.data.data) {
+                this.categories = result.data.data;
+            } else if (result.data) {
+                this.categories = result.data;
+            } else {
+                this.categories = result;
+            }
+            
+            // Ensure categories is an array
+            if (!Array.isArray(this.categories)) {
+                console.error('Categories is not an array:', this.categories);
+                this.categories = [];
+            }
+            
             console.log('Categories loaded:', this.categories.length, 'items');
             this.renderCategories();
             

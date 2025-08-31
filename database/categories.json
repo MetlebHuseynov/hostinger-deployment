@@ -1,32 +1,32 @@
 [
     {
         "id": 1,
-        "name": "",
-        "description": "",
+        "name": "Elektrik Avadanlıqları",
+        "description": "Elektrik və elektronika avadanlıqları",
         "image": "",
         "created_at": "2025-08-30 13:43:45",
         "updated_at": "2025-08-30 13:43:45"
     },
     {
         "id": 2,
-        "name": "",
-        "description": "",
+        "name": "Mexaniki Hissələr",
+        "description": "Mexaniki komponentlər və hissələr",
         "image": "",
         "created_at": "2025-08-30 13:48:29",
         "updated_at": "2025-08-30 13:48:29"
     },
     {
         "id": 3,
-        "name": "",
-        "description": "",
+        "name": "Avtomatlaşdırma",
+        "description": "Avtomatlaşdırma sistemləri və komponentləri",
         "image": "",
         "created_at": "2025-08-30 15:42:25",
         "updated_at": "2025-08-30 15:42:25"
     },
     {
         "id": 4,
-        "name": "",
-        "description": "",
+        "name": "Sənaye Avadanlıqları",
+        "description": "Sənaye üçün avadanlıqlar və alətlər",
         "image": "",
         "created_at": "2025-08-30 15:53:06",
         "updated_at": "2025-08-30 15:53:06"

@@ -1,3 +1,29 @@
 [2025-08-31 01:14:23] [INFO] Auto sync started via API
 [2025-08-31 01:14:33] [INFO] Auto sync started via API
 [2025-08-31 01:17:40] [INFO] Auto sync started via API
+[2025-08-31 01:20:17] [INFO] Manual sync triggered via API
+[2025-08-31 01:20:17] [INFO] Export triggered: 🚀 HOSTINGER EXPORT TOOL
+=========================
+
+✅ Connected to local SQLite database
+
+📝 GENERATING HOSTINGER SYNC FILE
+==================================
+📊 Processing categories...
+📥 Found 3 records in categories
+📊 Processing markas...
+📥 Found 6 records in markas
+📊 Processing products...
+📥 Found 5 records in products
+
+✅ Sync file generated: hostinger_sync.sql
+✅ Backup template generated: hostinger_backup_template.sql
+✅ Sync instructions generated: SYNC_INSTRUCTIONS.md
+
+🎯 EXPORT COMPLETED!
+Files generated:
+  - hostinger_sync.sql (import this to Hostinger)
+  - hostinger_backup_template.sql (backup template)
+  - SYNC_INSTRUCTIONS.md (detailed instructions)
+🔒 Local database connection closed
+

@@ -1,6 +1,6 @@
 -- =============================================
 -- Hostinger Database Synchronization Script
--- Generated: 2025-08-30T20:50:50.349Z
+-- Generated: 2025-08-30T21:20:17.531Z
 -- =============================================
 
 SET FOREIGN_KEY_CHECKS = 0;
