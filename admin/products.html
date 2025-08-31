@@ -368,16 +368,7 @@
                 console.error('Error fetching products.js:', error);
             });
             
-        // Load sync management script
-        const syncScript = document.createElement('script');
-        syncScript.src = '../js/admin/sync.js';
-        syncScript.onload = function() {
-            console.log('Sync management loaded successfully');
-        };
-        syncScript.onerror = function() {
-            console.error('Failed to load sync.js');
-        };
-        document.head.appendChild(syncScript);
+        // Sync management removed
     </script>
 </body>
 </html>

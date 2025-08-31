@@ -1,32 +1,32 @@
 [
     {
         "id": 1,
-        "name": "Elektrik Avadanlıqları",
-        "description": "Elektrik və elektronika avadanlıqları",
+        "name": "Elektrik Avadanl\u0131qlar\u0131",
+        "description": "Elektrik v\u0259 elektronika avadanl\u0131qlar\u0131",
         "image": "",
         "created_at": "2025-08-30 13:43:45",
         "updated_at": "2025-08-30 13:43:45"
     },
     {
         "id": 2,
-        "name": "Mexaniki Hissələr",
-        "description": "Mexaniki komponentlər və hissələr",
+        "name": "Mexaniki Hiss\u0259l\u0259r",
+        "description": "Mexaniki komponentl\u0259r v\u0259 hiss\u0259l\u0259r",
         "image": "",
         "created_at": "2025-08-30 13:48:29",
         "updated_at": "2025-08-30 13:48:29"
     },
     {
         "id": 3,
-        "name": "Avtomatlaşdırma",
-        "description": "Avtomatlaşdırma sistemləri və komponentləri",
+        "name": "Avtomatla\u015fd\u0131rma",
+        "description": "Avtomatla\u015fd\u0131rma sisteml\u0259ri v\u0259 komponentl\u0259ri",
         "image": "",
         "created_at": "2025-08-30 15:42:25",
         "updated_at": "2025-08-30 15:42:25"
     },
     {
         "id": 4,
-        "name": "Sənaye Avadanlıqları",
-        "description": "Sənaye üçün avadanlıqlar və alətlər",
+        "name": "S\u0259naye Avadanl\u0131qlar\u0131",
+        "description": "S\u0259naye \u00fc\u00e7\u00fcn avadanl\u0131qlar v\u0259 al\u0259tl\u0259r",
         "image": "",
         "created_at": "2025-08-30 15:53:06",
         "updated_at": "2025-08-30 15:53:06"
@@ -38,14 +38,6 @@
         "image": "",
         "created_at": "2025-08-30 16:14:45",
         "updated_at": "2025-08-30 16:14:45"
-    },
-    {
-        "id": 6,
-        "name": "Debug Category 1756556184707",
-        "description": "Debug description",
-        "image": "",
-        "created_at": "2025-08-30 16:16:24",
-        "updated_at": "2025-08-30 16:16:24"
     },
     {
         "id": 7,
