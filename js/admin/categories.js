@@ -140,7 +140,7 @@ class CategoriesManager {
     }
 
     async loadCategories() {
-        console.log('Loading categories...');
+        console.log('=== Loading Categories ===');
         this.showLoading(true);
         try {
             await this.getCurrentUser();
@@ -159,6 +159,8 @@ class CategoriesManager {
                 method: 'GET',
                 headers: headers
             });
+            
+            console.log('API response status:', response.status);
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -183,6 +185,7 @@ class CategoriesManager {
             }
             
             console.log('Categories loaded:', this.categories.length, 'items');
+            console.log('Categories data:', this.categories);
             this.renderCategories();
             
             // Show/hide add category button based on user role
@@ -203,15 +206,19 @@ class CategoriesManager {
     }
 
     renderCategories() {
+        console.log('=== Rendering Categories ===');
         const tbody = document.getElementById('categories-table');
         const noData = document.getElementById('no-data');
+        console.log('Tbody element found:', tbody ? 'YES' : 'NO');
         
         if (!tbody) {
             console.error('Categories table element not found');
             return;
         }
         
+        console.log('Categories to render:', this.categories ? this.categories.length : 'null/undefined');
         if (this.categories.length === 0) {
+            console.log('No categories to display, showing empty message');
             tbody.innerHTML = '';
             if (noData) noData.classList.remove('d-none');
             return;
@@ -220,7 +227,7 @@ class CategoriesManager {
         if (noData) noData.classList.add('d-none');
         
         tbody.innerHTML = this.categories.map(category => {
-            const createdDate = new Date(category.createdAt).toLocaleDateString('az-AZ');
+            const createdDate = new Date(category.created_at).toLocaleDateString('az-AZ');
             
             return `
                 <tr>
@@ -231,10 +238,10 @@ class CategoriesManager {
                     </td>
                     <td>${category.name}</td>
                     <td>${category.description || '-'}</td>
-                    <td>${category.productCount || 0}</td>
+                    <td>${category.product_count || 0}</td>
                     <td>
-                        <span class="status-badge ${category.status}">
-                            ${category.status === 'active' ? 'Aktiv' : 'Qeyri-aktiv'}
+                        <span class="status-badge active">
+                            Aktiv
                         </span>
                     </td>
                     <td>${createdDate}</td>

@@ -248,6 +248,22 @@ class MockStatement {
             return [];
         }
         
+        // Handle markas table
+        if (stripos($this->sql, 'markas') !== false) {
+            $markasFile = dirname($this->dataFile) . '/markas.json';
+            if (file_exists($markasFile)) {
+                $markas = json_decode(file_get_contents($markasFile), true) ?: [];
+                
+                // Add product_count to each marka (mock data)
+                foreach ($markas as &$marka) {
+                    $marka['product_count'] = 0; // Mock product count
+                }
+                
+                return $markas;
+            }
+            return [];
+        }
+        
         // Handle products table (default)
         $data = json_decode(file_get_contents($this->dataFile), true) ?: [];
         return $data;

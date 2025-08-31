@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Siemens",
+    "description": "Siemens is a German multinational conglomerate company and the largest industrial manufacturing company in Europe.",
+    "image": "images/siemens-logo.svg",
+    "created_at": "2025-01-20 10:00:00",
+    "updated_at": "2025-01-20 10:00:00"
+  },
+  {
+    "id": 2,
+    "name": "ABB",
+    "description": "ABB is a Swedish-Swiss multinational corporation specializing in robotics, power, heavy electrical equipment, and automation technology.",
+    "image": "images/abb-logo.svg",
+    "created_at": "2025-01-20 10:00:00",
+    "updated_at": "2025-01-20 10:00:00"
+  },
+  {
+    "id": 3,
+    "name": "Schneider Electric",
+    "description": "Schneider Electric is a French multinational company providing energy and automation digital solutions for efficiency and sustainability.",
+    "image": "images/schneider-logo.svg",
+    "created_at": "2025-01-20 10:00:00",
+    "updated_at": "2025-01-20 10:00:00"
+  },
+  {
+    "id": 4,
+    "name": "Bosch",
+    "description": "Bosch is a German multinational engineering and technology company headquartered in Gerlingen, near Stuttgart.",
+    "image": "images/bosch-logo.svg",
+    "created_at": "2025-01-20 10:00:00",
+    "updated_at": "2025-01-20 10:00:00"
+  },
+  {
+    "id": 5,
+    "name": "Danfoss",
+    "description": "Danfoss is a Danish multinational corporation specializing in products and services used in heating, cooling, and motion.",
+    "image": "images/danfoss-logo.svg",
+    "created_at": "2025-01-20 10:00:00",
+    "updated_at": "2025-01-20 10:00:00"
+  }
+]

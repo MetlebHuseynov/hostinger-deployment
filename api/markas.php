@@ -111,7 +111,7 @@ function getBrands($db) {
         $sql = "SELECT m.*, 
                        COUNT(p.id) as product_count
                 FROM markas m 
-                LEFT JOIN products p ON m.id = p.brand_id 
+                LEFT JOIN products p ON m.id = p.marka_id 
                 $whereClause 
                 GROUP BY m.id 
                 ORDER BY m.$sortBy $sortOrder 
@@ -500,8 +500,8 @@ function formatBrand($brand) {
         'id' => (int)$brand['id'],
         'name' => $brand['name'],
         'description' => $brand['description'],
-        'logo' => $brand['logo'],
-        'website' => $brand['website'],
+        'logo' => $brand['image'] ?? null,
+        'website' => null,
         'product_count' => (int)($brand['product_count'] ?? 0),
         'created_at' => $brand['created_at'],
         'updated_at' => $brand['updated_at']

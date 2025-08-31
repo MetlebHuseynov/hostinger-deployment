@@ -5,7 +5,7 @@
 // DOM Elements
 const productsCountElement = document.getElementById('products-count');
 const categoriesCountElement = document.getElementById('categories-count');
-const markasCountElement = document.getElementById('markas-count');
+const markasCountElement = document.getElementById('brands-count');
 const usersCountElement = document.getElementById('users-count');
 const recentProductsTable = document.getElementById('recent-products-table');
 
@@ -13,7 +13,7 @@ const recentProductsTable = document.getElementById('recent-products-table');
 const API_BASE_URL = `${window.location.origin}/api`;
 const PRODUCTS_URL = `${API_BASE_URL}/products`;
 const CATEGORIES_URL = `${API_BASE_URL}/categories`;
-const MARKAS_URL = `${API_BASE_URL}/markas`;
+const MARKAS_URL = `${API_BASE_URL}/brands`;
 const USERS_URL = `${API_BASE_URL}/users`;
 const DASHBOARD_URL = `${API_BASE_URL}/dashboard`;
 
@@ -39,15 +39,23 @@ const loadDashboardData = async () => {
 // Load Products Count
 const loadProductsCount = async () => {
     try {
-        const token = getAuthToken();
-        const response = await fetch(PRODUCTS_URL, {
-            headers: {
-                'Authorization': `Bearer ${token}`
+        const response = await fetch(PRODUCTS_URL);
+        const result = await response.json();
+        
+        // Check API response structure
+        let products = result;
+        if (result && result.data && result.data.data) {
+            products = result.data.data;
+        } else if (result && Array.isArray(result)) {
+            products = result;
+        }
+        
+        if (products && Array.isArray(products)) {
+            if (productsCountElement) {
+                productsCountElement.textContent = products.length.toLocaleString();
             }
-        });
-        const products = await response.json();
-        if (productsCountElement) {
-            productsCountElement.textContent = products.length.toLocaleString();
+        } else {
+            if (productsCountElement) productsCountElement.textContent = '0';
         }
     } catch (error) {
         console.error('Error loading products count:', error);
@@ -58,15 +66,23 @@ const loadProductsCount = async () => {
 // Load Categories Count
 const loadCategoriesCount = async () => {
     try {
-        const token = getAuthToken();
-        const response = await fetch(CATEGORIES_URL, {
-            headers: {
-                'Authorization': `Bearer ${token}`
+        const response = await fetch(CATEGORIES_URL);
+        const result = await response.json();
+        
+        // Check API response structure
+        let categories = result;
+        if (result && result.data && result.data.data) {
+            categories = result.data.data;
+        } else if (result && Array.isArray(result)) {
+            categories = result;
+        }
+        
+        if (categories && Array.isArray(categories)) {
+            if (categoriesCountElement) {
+                categoriesCountElement.textContent = categories.length.toLocaleString();
             }
-        });
-        const categories = await response.json();
-        if (categoriesCountElement) {
-            categoriesCountElement.textContent = categories.length.toLocaleString();
+        } else {
+            if (categoriesCountElement) categoriesCountElement.textContent = '0';
         }
     } catch (error) {
         console.error('Error loading categories count:', error);
@@ -77,15 +93,23 @@ const loadCategoriesCount = async () => {
 // Load Markas Count
 const loadMarkasCount = async () => {
     try {
-        const token = getAuthToken();
-        const response = await fetch(MARKAS_URL, {
-            headers: {
-                'Authorization': `Bearer ${token}`
+        const response = await fetch(MARKAS_URL);
+        const result = await response.json();
+        
+        // Check API response structure
+        let markas = result;
+        if (result && result.data && result.data.data) {
+            markas = result.data.data;
+        } else if (result && Array.isArray(result)) {
+            markas = result;
+        }
+        
+        if (markas && Array.isArray(markas)) {
+            if (markasCountElement) {
+                markasCountElement.textContent = markas.length.toLocaleString();
             }
-        });
-        const markas = await response.json();
-        if (markasCountElement) {
-            markasCountElement.textContent = markas.length.toLocaleString();
+        } else {
+            if (markasCountElement) markasCountElement.textContent = '0';
         }
     } catch (error) {
         console.error('Error loading markas count:', error);
@@ -96,15 +120,9 @@ const loadMarkasCount = async () => {
 // Load Users Count
 const loadUsersCount = async () => {
     try {
-        const token = getAuthToken();
-        const response = await fetch(USERS_URL, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        const users = await response.json();
+        // Users count is not available without authentication, set to 0
         if (usersCountElement) {
-            usersCountElement.textContent = users.length.toLocaleString();
+            usersCountElement.textContent = '0';
         }
     } catch (error) {
         console.error('Error loading users count:', error);
@@ -117,13 +135,21 @@ const loadRecentProducts = async () => {
     try {
         if (!recentProductsTable) return;
         
-        const token = getAuthToken();
-        const response = await fetch(PRODUCTS_URL, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        const products = await response.json();
+        const response = await fetch(PRODUCTS_URL);
+        const result = await response.json();
+        
+        // Check API response structure
+        let products = result;
+        if (result && result.data && result.data.data) {
+            products = result.data.data;
+        } else if (result && Array.isArray(result)) {
+            products = result;
+        }
+        
+        // Check if products is an array
+        if (!products || !Array.isArray(products)) {
+            throw new Error('Invalid products data received');
+        }
         
         // Show only the first 5 products
         const recentProducts = products.slice(0, 5);

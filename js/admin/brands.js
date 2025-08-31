@@ -139,11 +139,26 @@ class MarkasManager {
                 headers['Authorization'] = `Bearer ${token}`;
             }
             
-            const response = await fetch(`${this.apiUrl}/markas`, {
+            const response = await fetch(`${this.apiUrl}/brands`, {
                 headers: headers
             });
             if (!response.ok) throw new Error('Failed to load markas');
-            this.markas = await response.json();
+            const result = await response.json();
+            console.log('Brands API response:', result);
+            
+            // Handle different response structures
+            if (result.data && result.data.data && Array.isArray(result.data.data)) {
+                this.markas = result.data.data;
+            } else if (Array.isArray(result.data)) {
+                this.markas = result.data;
+            } else if (Array.isArray(result)) {
+                this.markas = result;
+            } else {
+                this.markas = [];
+                console.warn('Invalid brands data received:', result);
+            }
+            
+            console.log('Processed brands:', this.markas);
             this.renderMarkas();
             
             // Show add marka button for admin and super admin users
@@ -162,7 +177,7 @@ class MarkasManager {
     }
 
     renderMarkas() {
-        const tbody = document.getElementById('markas-table');
+        const tbody = document.getElementById('brands-table');
         const noData = document.getElementById('no-data');
         
         if (this.markas.length === 0) {
@@ -174,7 +189,7 @@ class MarkasManager {
         noData.classList.add('d-none');
         
         tbody.innerHTML = this.markas.map(marka => {
-            const createdDate = new Date(marka.createdAt).toLocaleDateString('az-AZ');
+            const createdDate = new Date(marka.created_at).toLocaleDateString('az-AZ');
             
             return `
                 <tr>
@@ -190,10 +205,10 @@ class MarkasManager {
                             <i class="fas fa-external-link-alt"></i> Sayt
                         </a>` : '-'}
                     </td>
-                    <td>${marka.productCount || 0}</td>
+                    <td>${marka.product_count || 0}</td>
                     <td>
-                        <span class="status-badge ${marka.status}">
-                            ${marka.status === 'active' ? 'Aktiv' : 'Qeyri-aktiv'}
+                        <span class="status-badge active">
+                            Aktiv
                         </span>
                     </td>
                     <td>${createdDate}</td>

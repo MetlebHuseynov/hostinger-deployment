@@ -69,6 +69,9 @@ switch ($pathParts[0]) {
     case 'markas':
         require_once __DIR__ . '/markas.php';
         break;
+    case 'brands':
+        require_once __DIR__ . '/markas.php';
+        break;
     case 'users':
         require_once __DIR__ . '/users.php';
         break;
